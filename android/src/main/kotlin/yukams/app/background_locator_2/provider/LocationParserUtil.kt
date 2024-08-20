@@ -18,18 +18,20 @@ class LocationParserUtil {
                 isMocked = location.isFromMockProvider
             }
 
-            return hashMapOf(
-                    Keys.ARG_IS_MOCKED to isMocked,
-                    Keys.ARG_LATITUDE to location.latitude,
-                    Keys.ARG_LONGITUDE to location.longitude,
-                    Keys.ARG_ACCURACY to location.accuracy,
-                    Keys.ARG_ALTITUDE to location.altitude,
-                    Keys.ARG_SPEED to location.speed,
-                    Keys.ARG_SPEED_ACCURACY to speedAccuracy,
-                    Keys.ARG_HEADING to location.bearing,
-                    Keys.ARG_TIME to location.time.toDouble(),
-                    Keys.ARG_PROVIDER to location.provider,
+            val locationMap = hashMapOf(
+                Keys.ARG_IS_MOCKED to isMocked,
+                Keys.ARG_LATITUDE to location.latitude,
+                Keys.ARG_LONGITUDE to location.longitude,
+                Keys.ARG_ACCURACY to location.accuracy,
+                Keys.ARG_ALTITUDE to location.altitude,
+                Keys.ARG_SPEED to location.speed,
+                Keys.ARG_SPEED_ACCURACY to speedAccuracy,
+                Keys.ARG_HEADING to location.bearing,
+                Keys.ARG_TIME to location.time.toDouble(),
+                Keys.ARG_PROVIDER to location.provider
             )
+
+            return locationMap as HashMap<Any, Any> // Explicitly cast to HashMap<Any, Any>
         }
 
         fun getLocationMapFromLocation(location: LocationResult?): HashMap<Any, Any>? {
@@ -44,16 +46,19 @@ class LocationParserUtil {
                 isMocked = firstLocation.isFromMockProvider
             }
 
-            return hashMapOf(
-                    Keys.ARG_IS_MOCKED to isMocked,
-                    Keys.ARG_LATITUDE to firstLocation.latitude,
-                    Keys.ARG_LONGITUDE to firstLocation.longitude,
-                    Keys.ARG_ACCURACY to firstLocation.accuracy,
-                    Keys.ARG_ALTITUDE to firstLocation.altitude,
-                    Keys.ARG_SPEED to firstLocation.speed,
-                    Keys.ARG_SPEED_ACCURACY to speedAccuracy,
-                    Keys.ARG_HEADING to firstLocation.bearing,
-                    Keys.ARG_TIME to firstLocation.time.toDouble())
+            val locationMap = hashMapOf(
+                Keys.ARG_IS_MOCKED to isMocked,
+                Keys.ARG_LATITUDE to firstLocation.latitude,
+                Keys.ARG_LONGITUDE to firstLocation.longitude,
+                Keys.ARG_ACCURACY to firstLocation.accuracy,
+                Keys.ARG_ALTITUDE to firstLocation.altitude,
+                Keys.ARG_SPEED to firstLocation.speed,
+                Keys.ARG_SPEED_ACCURACY to speedAccuracy,
+                Keys.ARG_HEADING to firstLocation.bearing,
+                Keys.ARG_TIME to firstLocation.time.toDouble()
+            )
+
+            return locationMap as HashMap<Any, Any>? // Explicitly cast to HashMap<Any, Any>
         }
     }
 }
