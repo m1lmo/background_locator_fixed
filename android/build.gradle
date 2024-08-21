@@ -27,12 +27,11 @@ apply plugin: 'kotlin-android'
 android {
     namespace 'yukams.app.background_locator_2'
     compileSdkVersion 34
-
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
     defaultConfig {
-        minSdkVersion 29
+        minSdkVersion 21
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions {

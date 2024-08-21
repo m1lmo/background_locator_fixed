@@ -84,7 +84,14 @@ class IsolateHolderService : MethodChannel.MethodCallHandler, LocationUpdateList
     override fun onCreate() {
         super.onCreate()
         startLocatorService(this)
-        startForeground(notificationId, getNotification(), ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            Log.d("IsolateHolderService", "API Level 29 or higher - Using ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION")
+            startForeground(notificationId, getNotification(), ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION)
+        } else {
+            Log.d("IsolateHolderService", "API Level lower than 29 - Using default startForeground")
+            startForeground(notificationId, getNotification())
+        }
+        
     }
 
     private fun start() {
